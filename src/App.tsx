@@ -8,11 +8,6 @@ import {
   Modal,
   ModalBody,
   useDisclosure,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
 } from "@chakra-ui/react";
 
 import Layout from "./layout";
@@ -52,6 +47,19 @@ const Index = () => {
   const selectContact = (id) => {
     const selected = Contacts.find((c) => c.id === id);
     setSelectedContact(selected);
+  };
+
+  const ScrollBarStyles = {
+    "&::-webkit-scrollbar": {
+      width: "6px",
+    },
+    "&::-webkit-scrollbar-track": {
+      width: "16px",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      background: "lightGray",
+      borderRadius: "24px",
+    },
   };
   return (
     <Layout>
@@ -97,6 +105,9 @@ const Index = () => {
             <ContactsList
               contacts={filteredContacts}
               selectContact={selectContact}
+              h={"100vh"}
+              overflowY={"scroll"}
+              css={ScrollBarStyles}
             />
           </VStack>
         </Box>

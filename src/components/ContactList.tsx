@@ -1,19 +1,6 @@
 import { Box, List, ListItem, Text } from "@chakra-ui/react";
 
 export const ContactsList = (props) => {
-  const ScrollBarStyles = {
-    "&::-webkit-scrollbar": {
-      width: "6px",
-    },
-    "&::-webkit-scrollbar-track": {
-      width: "16px",
-    },
-    "&::-webkit-scrollbar-thumb": {
-      background: "lightGray",
-      borderRadius: "24px",
-    },
-  };
-
   const { contacts, selectContact } = props;
 
   const groupNames = (arr) => {
@@ -21,7 +8,7 @@ export const ContactsList = (props) => {
       let char = val.name.charAt(0).toUpperCase();
 
       acc[char] = [].concat(acc[char] || [], val);
-      
+
       return acc;
     }, {});
     const res = Object.keys(map).map((el) => ({
@@ -32,28 +19,30 @@ export const ContactsList = (props) => {
   };
 
   return (
-    <List {...props}>
-      {groupNames(contacts).map((letter, index) => (
-        <Box key={index}>
-          <Text>{letter.letter}</Text>
-          {letter.names.map((contact) => {
-            return (
-              <ListItem
-                key={contact.id}
-                onClick={() => selectContact(contact.id)}
-                borderBottom={"2px"}
-                p={2}
-                my={4}
-                borderColor={"lightGray"}
-              >
-                <Text _hover={{ cursor: "pointer", color: "darkGray" }}>
-                  {contact.name}
-                </Text>
-              </ListItem>
-            );
-          })}
-        </Box>
-      ))}
-    </List>
+    <Box {...props}>
+      <List>
+        {groupNames(contacts).map((letter, index) => (
+          <Box key={index}>
+            <Text>{letter.letter}</Text>
+            {letter.names.map((contact) => {
+              return (
+                <ListItem
+                  key={contact.id}
+                  onClick={() => selectContact(contact.id)}
+                  borderBottom={"2px"}
+                  p={2}
+                  my={4}
+                  borderColor={"lightGray"}
+                >
+                  <Text _hover={{ cursor: "pointer", color: "darkGray" }}>
+                    {contact.name}
+                  </Text>
+                </ListItem>
+              );
+            })}
+          </Box>
+        ))}
+      </List>
+    </Box>
   );
 };
