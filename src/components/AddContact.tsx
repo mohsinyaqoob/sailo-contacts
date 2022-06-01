@@ -101,7 +101,7 @@ const AddContact = ({ isOpen, onClose }) => {
                 <Input
                   id="email"
                   name="email"
-                  type="text"
+                  type="email"
                   placeholder="Email"
                   onChange={handleChange}
                   value={formData.email}
@@ -111,7 +111,7 @@ const AddContact = ({ isOpen, onClose }) => {
                 <Input
                   id="phone"
                   name="phone"
-                  type="text"
+                  type="number"
                   placeholder="Phone"
                   onChange={handleChange}
                   value={formData.phone}

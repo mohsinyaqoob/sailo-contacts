@@ -5,8 +5,6 @@ import {
   VStack,
   Text,
   Button,
-  Modal,
-  ModalBody,
   useDisclosure,
 } from "@chakra-ui/react";
 
@@ -18,8 +16,6 @@ import { ContactsList } from "./components/ContactList";
 import { ContactCard } from "./components/ContactCard";
 import { AddIcon } from "@chakra-ui/icons";
 import AddContact from "./components/AddContact";
-import DeleteContact from "./components/DeleteContact";
-import { Contact } from "./types/contact";
 
 const Index = () => {
   const [filteredContacts, setFilteredContacts] = useState(Contacts || {});
