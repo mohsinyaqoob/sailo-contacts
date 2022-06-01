@@ -1,8 +1,15 @@
-import { Box, Input, Text } from "@chakra-ui/react";
+import { DeleteIcon } from "@chakra-ui/icons";
+import {
+  Box,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Text,
+} from "@chakra-ui/react";
 import { ChangeEventHandler } from "react";
 
 export const SearchBox = (props) => {
-  const { searchContacts } = props;
+  const { searchContacts, unselectContact } = props;
   const onSearch: ChangeEventHandler<HTMLInputElement> = (event) => {
     const query = event.currentTarget.value;
     searchContacts(query);
@@ -10,12 +17,17 @@ export const SearchBox = (props) => {
 
   return (
     <Box>
-      <Input
-        onChange={onSearch}
-        placeholder="Search..."
-        size={"md"}
-        {...props}
-      />
+      <InputGroup>
+        <Input
+          onChange={onSearch}
+          placeholder="Search..."
+          size={"md"}
+          {...props}
+        />
+        <InputRightElement>
+          <DeleteIcon onClick={unselectContact} />
+        </InputRightElement>
+      </InputGroup>
     </Box>
   );
 };

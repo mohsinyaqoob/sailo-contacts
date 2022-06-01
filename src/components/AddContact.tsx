@@ -18,14 +18,15 @@ import { useState } from "react";
 
 import { Contacts } from "../data/contacts";
 import { Contact } from "../types/contact";
+import { getContacts, SaveContact } from "../utils";
 
-const AddContact = ({ isOpen, onClose }) => {
+const AddContact = ({ isOpen, onClose, setReload, reload }) => {
   const [formData, setFormData]: any = useState({
-    name: "",
-    email: "",
-    phone: "",
-    designation: "",
-    department: "",
+    name: "Sample User",
+    email: "sample-user@sample-org.com",
+    phone: "777777777",
+    designation: "Software Engineer",
+    department: "Engineering",
     group: "Alpha Reds",
     picture: "https://randomuser.me/api/portraits/women/37.jpg",
   });
@@ -50,18 +51,22 @@ const AddContact = ({ isOpen, onClose }) => {
     if (isValid) {
       // Add to list
       // Get last id
-      const id: number = Contacts.length + 1;
+      const contacts = getContacts();
+      const id: number = contacts.length + 1;
       const newContact: Contact = {
         id,
         ...formData,
       };
-      Contacts.push(newContact);
-      onClose();
+
+      SaveContact(newContact);
+      setReload(!reload);
+
       toast({
         title: "Contact added",
         status: "success",
         position: "top-right",
       });
+      onClose();
     }
   };
 
@@ -73,7 +78,17 @@ const AddContact = ({ isOpen, onClose }) => {
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      onCloseComplete={() => setFormData({})}
+      // onCloseComplete={() =>
+      //   setFormData({
+      //     name: "",
+      //     email: "",
+      //     phone: "",
+      //     designation: "",
+      //     department: "",
+      //     group: "Alpha Reds",
+      //     picture: "https://randomuser.me/api/portraits/women/37.jpg",
+      //   })
+      // }
     >
       <ModalOverlay />
 

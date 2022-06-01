@@ -9,17 +9,21 @@ import {
 } from "@chakra-ui/react";
 
 import Layout from "./layout";
-import { Contacts } from "./data/contacts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SearchBox } from "./components/SearchBox";
 import { ContactsList } from "./components/ContactList";
 import { ContactCard } from "./components/ContactCard";
 import { AddIcon } from "@chakra-ui/icons";
 import AddContact from "./components/AddContact";
+import { getContacts } from "./utils";
+import DeleteContact from "./components/DeleteContact";
 
 const Index = () => {
-  const [filteredContacts, setFilteredContacts] = useState(Contacts || {});
-  const [selectedContact, setSelectedContact] = useState(Contacts[0]);
+  const [contacts, setContacts] = useState([]);
+  const [filteredContacts, setFilteredContacts] = useState([]);
+  const [selectedContact, setSelectedContact] = useState();
+  const [reload, setReload] = useState(false);
+
   const {
     isOpen: isOpenAddModal,
     onOpen: onOpenAddModal,
@@ -33,7 +37,7 @@ const Index = () => {
   } = useDisclosure();
 
   const searchContacts = (query) => {
-    const filter = Contacts.filter((contact) =>
+    const filter = contacts.filter((contact) =>
       contact.name.toLowerCase().includes(query.toLowerCase())
     );
 
@@ -41,9 +45,20 @@ const Index = () => {
   };
 
   const selectContact = (id) => {
-    const selected = Contacts.find((c) => c.id === id);
+    const selected = contacts.find((c) => c.id === id);
     setSelectedContact(selected);
   };
+
+  const unselectContact = () => {
+    setSelectedContact(null);
+  };
+
+  useEffect(() => {
+    const contactsData = getContacts();
+    setContacts(contactsData);
+    setFilteredContacts(contactsData);
+    contactsData.length > 0 && setSelectedContact(contactsData[0]);
+  }, [reload]);
 
   const ScrollBarStyles = {
     "&::-webkit-scrollbar": {
@@ -57,9 +72,15 @@ const Index = () => {
       borderRadius: "24px",
     },
   };
+
   return (
     <Layout>
-      <AddContact isOpen={isOpenAddModal} onClose={onCloseAddModal} />
+      <AddContact
+        reload={reload}
+        setReload={setReload}
+        isOpen={isOpenAddModal}
+        onClose={onCloseAddModal}
+      />
 
       {/* Left Sider */}
       <HStack>
@@ -85,7 +106,10 @@ const Index = () => {
               </Heading>
             </Box>
             {/* Search Box */}
-            <SearchBox searchContacts={searchContacts} />
+            <SearchBox
+              unselectContact={unselectContact}
+              searchContacts={searchContacts}
+            />
 
             {/* Contact List */}
             <HStack justifyContent={"space-between"} px={1}>
@@ -110,8 +134,7 @@ const Index = () => {
         {/* Main Content */}
         <Box w={"full"} h={"100vh"} pl={96}>
           {/* Contact Card */}
-          {/* Use disclosuse for delete */}
-          {selectedContact ? <ContactCard contact={selectedContact} /> : null}
+          {selectedContact && <ContactCard contact={selectedContact} />}
         </Box>
       </HStack>
     </Layout>

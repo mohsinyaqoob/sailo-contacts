@@ -28,6 +28,7 @@ export const ContactCard = (props) => {
       phone,
       group,
       picture,
+      onOpenDeleteModal,
     },
   } = props;
   return (
@@ -129,7 +130,12 @@ export const ContactCard = (props) => {
                 Share Contact
               </Button>
               <Button leftIcon={<EditIcon />}>Edit</Button>
-              <Button variant={"solid"} leftIcon={<DeleteIcon />}>
+              <Button
+                onClick={onOpenDeleteModal}
+                variant={"solid"}
+                leftIcon={<DeleteIcon />}
+                colorScheme={"red"}
+              >
                 Delete
               </Button>
             </ButtonGroup>
