@@ -24,10 +24,11 @@ import { ContactCard } from "./components/ContactCard";
 import { AddIcon } from "@chakra-ui/icons";
 import AddContact from "./components/AddContact";
 import DeleteContact from "./components/DeleteContact";
+import { Contact } from "./types/contact";
 
 const Index = () => {
-  const [filteredContacts, setFilteredContacts]: any = useState(Contacts || {});
-  const [selectedContact, setSelectedContact]: any = useState(Contacts[0]);
+  const [filteredContacts, setFilteredContacts] = useState(Contacts || {});
+  const [selectedContact, setSelectedContact] = useState(Contacts[0]);
   const {
     isOpen: isOpenAddModal,
     onOpen: onOpenAddModal,
@@ -41,7 +42,6 @@ const Index = () => {
   } = useDisclosure();
 
   const searchContacts = (query) => {
-    console.log(query);
     const filter = Contacts.filter((contact) =>
       contact.name.toLowerCase().includes(query.toLowerCase())
     );
