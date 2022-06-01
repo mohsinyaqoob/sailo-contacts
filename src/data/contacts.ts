@@ -57,7 +57,7 @@ export const Contacts = [
     department: "Design",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "https://randomuser.me/api/portraits/women/43.jpg",
+    profileImage: "",
   },
   {
     id: 7,
@@ -107,7 +107,7 @@ export const Contacts = [
     department: "Design",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "https://randomuser.me/api/portraits/women/14.jpg",
+    profileImage: "",
   },
   {
     id: 12,
@@ -137,7 +137,7 @@ export const Contacts = [
     department: "Design",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "https://randomuser.me/api/portraits/women/21.jpg",
+    profileImage: "",
   },
   {
     id: 15,

@@ -1,6 +1,19 @@
 import { Box, List, ListItem, Text } from "@chakra-ui/react";
 
 export const ContactsList = (props) => {
+  const ScrollBarStyles = {
+    "&::-webkit-scrollbar": {
+      width: "6px",
+    },
+    "&::-webkit-scrollbar-track": {
+      width: "16px",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      background: "lightGray",
+      borderRadius: "24px",
+    },
+  };
+
   const { contacts, selectContact } = props;
 
   const groupNames = (arr) => {
