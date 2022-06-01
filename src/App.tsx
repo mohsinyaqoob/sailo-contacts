@@ -1,4 +1,19 @@
-import { Box, Heading, HStack, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  HStack,
+  VStack,
+  Text,
+  Button,
+  Modal,
+  ModalBody,
+  useDisclosure,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+} from "@chakra-ui/react";
 
 import Layout from "./layout";
 import { Contacts } from "./data/contacts";
@@ -6,23 +21,24 @@ import { useState } from "react";
 import { SearchBox } from "./components/SearchBox";
 import { ContactsList } from "./components/ContactList";
 import { ContactCard } from "./components/ContactCard";
-
-const ScrollBarStyles = {
-  "&::-webkit-scrollbar": {
-    width: "4px",
-  },
-  "&::-webkit-scrollbar-track": {
-    width: "6px",
-  },
-  "&::-webkit-scrollbar-thumb": {
-    background: "lightGray",
-    borderRadius: "24px",
-  },
-};
+import { AddIcon } from "@chakra-ui/icons";
+import AddContact from "./components/AddContact";
+import DeleteContact from "./components/DeleteContact";
 
 const Index = () => {
-  const [filteredContacts, setFilteredContacts]: any = useState(Contacts);
+  const [filteredContacts, setFilteredContacts]: any = useState(Contacts || {});
   const [selectedContact, setSelectedContact]: any = useState(Contacts[0]);
+  const {
+    isOpen: isOpenAddModal,
+    onOpen: onOpenAddModal,
+    onClose: onCloseAddModal,
+  } = useDisclosure();
+
+  const {
+    isOpen: isOpenDeleteModal,
+    onOpen: onOpenDeleteModal,
+    onClose: onCloseDeleteModal,
+  } = useDisclosure();
 
   const searchContacts = (query) => {
     const filter = Contacts.filter((contact) =>
@@ -36,9 +52,10 @@ const Index = () => {
     const selected = Contacts.find((c) => c.id === id);
     setSelectedContact(selected);
   };
-
   return (
     <Layout>
+      <AddContact isOpen={isOpenAddModal} onClose={onCloseAddModal} />
+      <DeleteContact isOpen={isOpenDeleteModal} onClose={onCloseDeleteModal} />
       {/* Left Sider */}
       <HStack>
         <Box
@@ -47,15 +64,12 @@ const Index = () => {
           position={"fixed"}
           h={"100vh"}
           boxShadow={"md"}
-          overflowY={"scroll"}
-          overflowX={"hidden"}
-          css={ScrollBarStyles}
           display={"flex"}
           flexDir={"column"}
           justifyContent={"space-between"}
         >
-          <VStack align={"left"}>
-            <Box mb={16} display={"flex"} alignItems={"center"} gap={4}>
+          <VStack align={"left"} spacing={8}>
+            <Box mb={8} display={"flex"} alignItems={"center"} gap={4}>
               {/* <PhoneIcon /> */}
               <Heading
                 size={"md"}
@@ -69,6 +83,16 @@ const Index = () => {
             <SearchBox searchContacts={searchContacts} />
 
             {/* Contact List */}
+            <HStack justifyContent={"space-between"} px={1}>
+              <Text fontWeight={600}>Your Contacts</Text>
+              <Button
+                onClick={onOpenAddModal}
+                leftIcon={<AddIcon />}
+                size={"sm"}
+              >
+                Add
+              </Button>
+            </HStack>
             <ContactsList
               contacts={filteredContacts}
               selectContact={selectContact}
@@ -78,7 +102,8 @@ const Index = () => {
         {/* Main Content */}
         <Box w={"full"} h={"100vh"} pl={96}>
           {/* Contact Card */}
-          <ContactCard contact={selectedContact} />
+          {/* Use disclosuse for delete */}
+          {selectedContact ? <ContactCard contact={selectedContact} /> : null}
         </Box>
       </HStack>
     </Layout>
