@@ -1,4 +1,4 @@
-import { Box, Heading, HStack } from "@chakra-ui/react";
+import { Box, Heading, HStack, VStack } from "@chakra-ui/react";
 
 import Layout from "./layout";
 import { Contacts } from "./data/contacts";
@@ -45,7 +45,7 @@ const Index = () => {
           p={8}
           w={96}
           position={"fixed"}
-          h={"full"}
+          h={"100vh"}
           boxShadow={"md"}
           overflowY={"scroll"}
           overflowX={"hidden"}
@@ -54,21 +54,26 @@ const Index = () => {
           flexDir={"column"}
           justifyContent={"space-between"}
         >
-          <Box mb={16} display={"flex"} alignItems={"center"} gap={4}>
-            {/* <PhoneIcon /> */}
-            <Heading size={"md"} textTransform={"uppercase"} letterSpacing={-1}>
-              sailo contact
-            </Heading>
-          </Box>
-          {/* Search Box */}
-          <SearchBox searchContacts={searchContacts} />
+          <VStack align={"left"}>
+            <Box mb={16} display={"flex"} alignItems={"center"} gap={4}>
+              {/* <PhoneIcon /> */}
+              <Heading
+                size={"md"}
+                textTransform={"uppercase"}
+                letterSpacing={-1}
+              >
+                sailo contact
+              </Heading>
+            </Box>
+            {/* Search Box */}
+            <SearchBox searchContacts={searchContacts} />
 
-          {/* Contact List */}
-          <ContactsList
-            flex={1}
-            contacts={filteredContacts}
-            selectContact={selectContact}
-          />
+            {/* Contact List */}
+            <ContactsList
+              contacts={filteredContacts}
+              selectContact={selectContact}
+            />
+          </VStack>
         </Box>
         {/* Main Content */}
         <Box w={"full"} h={"100vh"} pl={96}>
