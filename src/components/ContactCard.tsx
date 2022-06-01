@@ -28,7 +28,9 @@ export const ContactCard = (props) => {
       phone,
       group,
       profileImage,
+      
     },
+    deleteItem
   } = props;
   return (
     <VStack p={8} align={"left"}>
@@ -129,7 +131,7 @@ export const ContactCard = (props) => {
                 Share Contact
               </Button>
               <Button leftIcon={<EditIcon />}>Edit</Button>
-              <Button variant={"solid"} leftIcon={<DeleteIcon />}>
+              <Button variant={"solid"} leftIcon={<DeleteIcon />} onClick = {deleteItem}>
                 Delete
               </Button>
             </ButtonGroup>

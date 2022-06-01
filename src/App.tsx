@@ -8,11 +8,6 @@ import {
   Modal,
   ModalBody,
   useDisclosure,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
 } from "@chakra-ui/react";
 
 import Layout from "./layout";
@@ -24,10 +19,11 @@ import { ContactCard } from "./components/ContactCard";
 import { AddIcon } from "@chakra-ui/icons";
 import AddContact from "./components/AddContact";
 import DeleteContact from "./components/DeleteContact";
+// import { Contact } from "./types/contact";
 
 const Index = () => {
-  const [filteredContacts, setFilteredContacts]: any = useState(Contacts || {});
-  const [selectedContact, setSelectedContact]: any = useState(Contacts[0]);
+  const [filteredContacts, setFilteredContacts] = useState(Contacts || {});
+  const [selectedContact, setSelectedContact] = useState(Contacts[0]);
   const {
     isOpen: isOpenAddModal,
     onOpen: onOpenAddModal,
@@ -41,7 +37,6 @@ const Index = () => {
   } = useDisclosure();
 
   const searchContacts = (query) => {
-    console.log(query);
     const filter = Contacts.filter((contact) =>
       contact.name.toLowerCase().includes(query.toLowerCase())
     );
@@ -52,6 +47,19 @@ const Index = () => {
   const selectContact = (id) => {
     const selected = Contacts.find((c) => c.id === id);
     setSelectedContact(selected);
+  };
+
+  const ScrollBarStyles = {
+    "&::-webkit-scrollbar": {
+      width: "6px",
+    },
+    "&::-webkit-scrollbar-track": {
+      width: "16px",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      background: "lightGray",
+      borderRadius: "24px",
+    },
   };
   return (
     <Layout>
@@ -97,6 +105,9 @@ const Index = () => {
             <ContactsList
               contacts={filteredContacts}
               selectContact={selectContact}
+              h={"100vh"}
+              overflowY={"scroll"}
+              css={ScrollBarStyles}
             />
           </VStack>
         </Box>
