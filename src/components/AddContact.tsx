@@ -14,11 +14,13 @@ import {
 } from "@chakra-ui/react";
 
 const AddContact = ({ isOpen, onClose }) => {
-  const handleSubmit = () => {};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <form onSubmit={() => alert()}>
+      <form onSubmit={handleSubmit}>
         <ModalContent>
           <ModalHeader>Add Contact</ModalHeader>
           <ModalCloseButton />
