@@ -19,7 +19,7 @@ import { ContactCard } from "./components/ContactCard";
 import { AddIcon } from "@chakra-ui/icons";
 import AddContact from "./components/AddContact";
 import DeleteContact from "./components/DeleteContact";
-// import { Contact } from "./types/contact";
+import { Contact } from "./types/contact";
 
 const Index = () => {
   const [filteredContacts, setFilteredContacts] = useState(Contacts || {});
@@ -29,12 +29,16 @@ const Index = () => {
     onOpen: onOpenAddModal,
     onClose: onCloseAddModal,
   } = useDisclosure();
-
   const {
     isOpen: isOpenDeleteModal,
     onOpen: onOpenDeleteModal,
     onClose: onCloseDeleteModal,
   } = useDisclosure();
+
+ const deleteItem = () => {
+    onOpenDeleteModal()
+ }
+  
 
   const searchContacts = (query) => {
     const filter = Contacts.filter((contact) =>
@@ -49,6 +53,9 @@ const Index = () => {
     setSelectedContact(selected);
   };
 
+  const deleleContact = (id) => {
+     Contacts.splice(id, 1);
+  }
   const ScrollBarStyles = {
     "&::-webkit-scrollbar": {
       width: "6px",
@@ -64,7 +71,7 @@ const Index = () => {
   return (
     <Layout>
       <AddContact isOpen={isOpenAddModal} onClose={onCloseAddModal} />
-      <DeleteContact isOpen={isOpenDeleteModal} onClose={onCloseDeleteModal} />
+      <DeleteContact isOpen={isOpenDeleteModal} onClose={onCloseDeleteModal} deleteContact={() =>deleleContact(selectedContact.id)} />
       {/* Left Sider */}
       <HStack>
         <Box
@@ -115,7 +122,7 @@ const Index = () => {
         <Box w={"full"} h={"100vh"} pl={96}>
           {/* Contact Card */}
           {/* Use disclosuse for delete */}
-          {selectedContact ? <ContactCard contact={selectedContact} /> : null}
+          {selectedContact ? <ContactCard contact={selectedContact}  deleteItem = {deleteItem}/> : null}
         </Box>
       </HStack>
     </Layout>

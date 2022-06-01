@@ -13,19 +13,19 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-const DeleteContact = ({ isOpen, onClose }) => {
+const DeleteContact = ({ isOpen, onClose , deleteContact }) => {
   const handleSubmit = () => {};
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <form onSubmit={() => alert()}>
+      <form >
         <ModalContent>
           <ModalHeader>Do you want to Delete this item</ModalHeader>
           <ModalCloseButton />
          
 
           <ModalFooter>
-          <Button type="submit" colorScheme="blue">
+          <Button type="submit" colorScheme="blue"  onClick = {deleteContact}>
                yes
             </Button>
             <Button variant={"ghost"} mr={3} onClick={onClose}>
