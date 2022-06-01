@@ -10,9 +10,12 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
+  Toast,
   UseDisclosureProps,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
+import { deleteContact } from "../utils";
 
 type DeleteContactProps = {
   isOpen: UseDisclosureProps;
@@ -21,12 +24,25 @@ type DeleteContactProps = {
   setReload: Function;
 };
 
-const DeleteContact = ({ isOpen, onClose, reload, setReload }) => {
-  const handleSubmit = () => {};
+const DeleteContact = ({ isOpen, onClose, reload, setReload, contact }) => {
+  const toast = useToast();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    deleteContact(contact.id);
+    setReload(!reload);
+    onClose();
+
+    toast({
+      title: `${contact.name} was deleted`,
+      status: "success",
+      position: "top-right",
+    });
+  };
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <form onSubmit={() => alert()}>
+      <form onSubmit={handleSubmit}>
         <ModalContent>
           <ModalHeader>Delete Contact</ModalHeader>
           <ModalCloseButton />

@@ -10,7 +10,6 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-  Toast,
   useToast,
   VStack,
 } from "@chakra-ui/react";
@@ -19,7 +18,7 @@ import { useState } from "react";
 import { Contact } from "../types/contact";
 import { getContacts, SaveContact } from "../utils";
 
-const AddContact = ({ isOpen, onClose, setReload, reload }) => {
+const EditContact = ({ isOpen, onClose, setReload, reload, contact }) => {
   const [formData, setFormData]: any = useState({
     name: "Sample User",
     email: "sample-user@sample-org.com",
@@ -187,4 +186,4 @@ const AddContact = ({ isOpen, onClose, setReload, reload }) => {
   );
 };
 
-export default AddContact;
+export default EditContact;

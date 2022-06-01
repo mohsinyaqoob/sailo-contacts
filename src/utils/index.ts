@@ -1,4 +1,4 @@
-export const getShortName = (name) => {
+export const getShortName = (name: string) => {
   const nameArray = name.split(" ");
   return nameArray.map((n) => n.charAt(0));
 };
@@ -22,4 +22,11 @@ export const getContacts = () => {
   }
 
   return [];
+};
+
+export const deleteContact = (id: number) => {
+  const localStorageData = localStorage.getItem("contacts");
+  const contacts = JSON.parse(localStorageData);
+  const newContacts = contacts.filter((contact) => contact.id !== id);
+  localStorage.setItem("contacts", JSON.stringify(newContacts));
 };
