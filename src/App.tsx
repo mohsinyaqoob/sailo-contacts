@@ -41,6 +41,7 @@ const Index = () => {
   } = useDisclosure();
 
   const searchContacts = (query) => {
+    console.log(query);
     const filter = Contacts.filter((contact) =>
       contact.name.toLowerCase().includes(query.toLowerCase())
     );
