@@ -64,7 +64,7 @@ const Index = () => {
   return (
     <Layout>
       <AddContact isOpen={isOpenAddModal} onClose={onCloseAddModal} />
-      <DeleteContact isOpen={isOpenDeleteModal} onClose={onCloseDeleteModal} />
+
       {/* Left Sider */}
       <HStack>
         <Box
@@ -105,7 +105,7 @@ const Index = () => {
             <ContactsList
               contacts={filteredContacts}
               selectContact={selectContact}
-              h={"100vh"}
+              h={"60vh"}
               overflowY={"scroll"}
               css={ScrollBarStyles}
             />

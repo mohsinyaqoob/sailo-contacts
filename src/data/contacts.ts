@@ -7,7 +7,7 @@ export const Contacts = [
     designation: "Project Manager",
     department: "Engineering",
     group: "Alpha Green",
-    profileImage: "https://randomuser.me/api/portraits/men/36.jpg",
+    picture: "https://randomuser.me/api/portraits/men/36.jpg",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const Contacts = [
     department: "Engineering",
     phone: "9090881122",
     group: "Alpha Yellow",
-    profileImage: "https://randomuser.me/api/portraits/women/37.jpg",
+    picture: "https://randomuser.me/api/portraits/women/37.jpg",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ export const Contacts = [
     department: "Engineering",
     phone: "9090881122",
     group: "Alpha Red",
-    profileImage: "",
+    picture: "",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ export const Contacts = [
     department: "Humar Resource",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "https://randomuser.me/api/portraits/men/32.jpg",
+    picture: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ export const Contacts = [
     department: "Engineering",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "https://randomuser.me/api/portraits/men/31.jpg",
+    picture: "https://randomuser.me/api/portraits/men/31.jpg",
   },
   {
     id: 6,
@@ -57,7 +57,7 @@ export const Contacts = [
     department: "Design",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "",
+    picture: "",
   },
   {
     id: 7,
@@ -67,7 +67,7 @@ export const Contacts = [
     department: "Design",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "https://randomuser.me/api/portraits/men/3.jpg",
+    picture: "https://randomuser.me/api/portraits/men/3.jpg",
   },
   {
     id: 8,
@@ -77,7 +77,7 @@ export const Contacts = [
     department: "Design",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "https://randomuser.me/api/portraits/men/2.jpg",
+    picture: "https://randomuser.me/api/portraits/men/2.jpg",
   },
   {
     id: 9,
@@ -87,7 +87,7 @@ export const Contacts = [
     department: "Design",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "https://randomuser.me/api/portraits/men/12.jpg",
+    picture: "https://randomuser.me/api/portraits/men/12.jpg",
   },
   {
     id: 10,
@@ -97,7 +97,7 @@ export const Contacts = [
     department: "Design",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "https://randomuser.me/api/portraits/men/13.jpg",
+    picture: "https://randomuser.me/api/portraits/men/13.jpg",
   },
   {
     id: 11,
@@ -107,7 +107,7 @@ export const Contacts = [
     department: "Design",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "",
+    picture: "",
   },
   {
     id: 12,
@@ -117,7 +117,7 @@ export const Contacts = [
     department: "Design",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "https://randomuser.me/api/portraits/women/76.jpg",
+    picture: "https://randomuser.me/api/portraits/women/76.jpg",
   },
   {
     id: 13,
@@ -127,7 +127,7 @@ export const Contacts = [
     department: "Design",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "https://randomuser.me/api/portraits/men/20.jpg",
+    picture: "https://randomuser.me/api/portraits/men/20.jpg",
   },
   {
     id: 14,
@@ -137,7 +137,7 @@ export const Contacts = [
     department: "Design",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "",
+    picture: "",
   },
   {
     id: 15,
@@ -147,7 +147,7 @@ export const Contacts = [
     department: "Design",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "https://randomuser.me/api/portraits/men/22.jpg",
+    picture: "https://randomuser.me/api/portraits/men/22.jpg",
   },
   {
     id: 16,
@@ -157,7 +157,7 @@ export const Contacts = [
     department: "Design",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "https://randomuser.me/api/portraits/men/23.jpg",
+    picture: "https://randomuser.me/api/portraits/men/23.jpg",
   },
   {
     id: 17,
@@ -167,7 +167,7 @@ export const Contacts = [
     department: "Design",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "https://randomuser.me/api/portraits/men/24.jpg",
+    picture: "https://randomuser.me/api/portraits/men/24.jpg",
   },
   {
     id: 18,
@@ -177,7 +177,7 @@ export const Contacts = [
     department: "Design",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "https://randomuser.me/api/portraits/men/25.jpg",
+    picture: "https://randomuser.me/api/portraits/men/25.jpg",
   },
   {
     id: 19,
@@ -187,6 +187,6 @@ export const Contacts = [
     department: "Design",
     phone: "9090881122",
     group: "Alpha Green",
-    profileImage: "https://randomuser.me/api/portraits/men/26.jpg",
+    picture: "https://randomuser.me/api/portraits/men/26.jpg",
   },
 ];

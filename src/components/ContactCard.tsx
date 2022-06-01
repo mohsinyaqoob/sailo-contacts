@@ -27,7 +27,7 @@ export const ContactCard = (props) => {
       department,
       phone,
       group,
-      profileImage,
+      picture,
     },
   } = props;
   return (
@@ -49,8 +49,8 @@ export const ContactCard = (props) => {
             size={"2xl"}
             fontWeight={"400"}
           >
-            {profileImage ? (
-              <Image rounded={"full"} src={profileImage} />
+            {picture ? (
+              <Image rounded={"full"} src={picture} />
             ) : (
               getShortName(name)
             )}
