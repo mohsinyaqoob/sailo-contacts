@@ -10,7 +10,7 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-  Toast,
+
   useToast,
   VStack,
 } from "@chakra-ui/react";
@@ -33,11 +33,12 @@ const AddContact = ({ isOpen, onClose, setReload, reload }) => {
   const toast = useToast();
 
   const handleSubmit = (event) => {
+     debugger
     event.preventDefault();
     // Validate
     let isValid = true;
     for (const prop in formData) {
-      if (formData[prop] == "") {
+      if (formData[prop] === "") {
         isValid = false;
         toast({
           title: `Field ${prop} is required`,

@@ -30,7 +30,6 @@ const Index = () => {
     onOpen: onOpenAddModal,
     onClose: onCloseAddModal,
   } = useDisclosure();
-
   const {
     isOpen: isOpenEditModal,
     onOpen: onOpenEditModal,
@@ -42,6 +41,8 @@ const Index = () => {
     onOpen: onOpenDeleteModal,
     onClose: onCloseDeleteModal,
   } = useDisclosure();
+
+  
 
   const searchContacts = (query) => {
     const filter = contacts.filter((contact) =>
@@ -67,7 +68,7 @@ const Index = () => {
     contactsData.length > 0 && setSelectedContact(contactsData[0]);
   }, [reload]);
 
-  const deleteContact = (id) => {};
+ 
 
   const ScrollBarStyles = {
     "&::-webkit-scrollbar": {
@@ -127,7 +128,7 @@ const Index = () => {
                 textTransform={"uppercase"}
                 letterSpacing={-1}
               >
-                sailo contact
+                sailo contacyt
               </Heading>
             </Box>
             {/* Search Box */}
