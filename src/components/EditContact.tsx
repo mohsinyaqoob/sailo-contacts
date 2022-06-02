@@ -19,9 +19,10 @@ import { Contact } from "../types/contact";
 import { getContacts, SaveContact } from "../utils";
 
 const EditContact = (props) => {
-  const { isOpen, onClose, setReload, reload, contact } = props;
+  const { isOpen, onClose, setReload, reload, contact  } = props;
+
   const [formData, setFormData]: any = useState({
-    name: "",
+    name:  "" ,
     email: "",
     phone: "",
     designation: "",
@@ -31,7 +32,6 @@ const EditContact = (props) => {
   });
 
   const toast = useToast();
-
   const handleSubmit = (event) => {
     event.preventDefault();
     // Validate
@@ -51,6 +51,7 @@ const EditContact = (props) => {
       // Add to list
       // Get last id
       const contacts = getContacts();
+   
       const id: number = contacts.length + 1;
       const newContact: Contact = {
         id,
@@ -111,7 +112,7 @@ const EditContact = (props) => {
                   name="name"
                   type="text"
                   placeholder="Full name"
-                  onChange={() => {}}
+                  onChange={(e) => handleChange(e)}
                   value={formData.name}
                 />
               </FormControl>
@@ -121,8 +122,8 @@ const EditContact = (props) => {
                   name="email"
                   type="email"
                   placeholder="Email"
-                  onChange={() => {}}
-                  value={""}
+                  onChange={(e) => handleChange(e)}
+                  value={formData.email}
                 />
               </FormControl>
               <FormControl>
@@ -131,8 +132,8 @@ const EditContact = (props) => {
                   name="phone"
                   type="number"
                   placeholder="Phone"
-                  onChange={() => {}}
-                  value={""}
+                  onChange={(e) => handleChange(e)}
+                  value={formData.phone}
                 />
               </FormControl>
               <FormControl>
@@ -141,8 +142,8 @@ const EditContact = (props) => {
                   name="designation"
                   type="text"
                   placeholder="Designation"
-                  onChange={() => {}}
-                  value={""}
+                  onChange={(e) => handleChange(e)}
+                  value={formData.designation}
                 />
               </FormControl>
               <FormControl>
@@ -151,8 +152,8 @@ const EditContact = (props) => {
                   name="department"
                   type="text"
                   placeholder="Department"
-                  onChange={() => {}}
-                  value={""}
+                  onChange={(e) => handleChange(e)}
+                  value={formData.department}
                 />
               </FormControl>
               <FormControl>
@@ -161,8 +162,8 @@ const EditContact = (props) => {
                   name="group"
                   type="text"
                   placeholder="Group"
-                  onChange={() => {}}
-                  value={""}
+                  onChange={(e) => handleChange(e)}
+                  value={formData.group}
                 />
               </FormControl>
               <FormControl>
@@ -171,8 +172,8 @@ const EditContact = (props) => {
                   name="picture"
                   type="text"
                   placeholder="Picture URL"
-                  onChange={() => {}}
-                  value={""}
+                  onChange={(e) => handleChange(e)}
+                  value={formData.picture}
                 />
               </FormControl>
             </VStack>
@@ -181,7 +182,7 @@ const EditContact = (props) => {
             <Button variant={"ghost"} mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button type="submit" colorScheme="blue">
+            <Button type="submit" colorScheme="blue" onSubmit={(e) => handleSubmit(e)}>
               Add
             </Button>
           </ModalFooter>

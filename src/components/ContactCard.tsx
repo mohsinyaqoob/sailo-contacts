@@ -13,6 +13,7 @@ import {
   Text,
   Badge,
   Image,
+  Link,
 } from "@chakra-ui/react";
 import { EditIcon, EmailIcon, DeleteIcon } from "@chakra-ui/icons";
 import { getShortName } from "../utils/index";
@@ -129,9 +130,12 @@ export const ContactCard = (props) => {
           </TableContainer>
           <HStack pt={8} justifyContent={"space-between"}>
             <ButtonGroup>
-              <Button variant={"outline"} leftIcon={<EmailIcon />}>
+            <Link href="mailto:someone@example.com">
+            <Button variant={"outline"} leftIcon={<EmailIcon />} >
                 Share Contact
               </Button>
+            </Link>
+            
               <Button onClick={openEditModal} leftIcon={<EditIcon />}>
                 Edit
               </Button>
