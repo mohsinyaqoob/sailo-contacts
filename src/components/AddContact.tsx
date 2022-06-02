@@ -10,12 +10,17 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
+  Toast,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
 import { useState } from "react";
 
+import { Contacts } from "../data/contacts";
+import { Contact } from "../types/contact";
+
 const AddContact = ({ isOpen, onClose }) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData]: any = useState({
     name: "",
     email: "",
     phone: "",
@@ -24,18 +29,53 @@ const AddContact = ({ isOpen, onClose }) => {
     group: "Alpha Reds",
     picture: "https://randomuser.me/api/portraits/women/37.jpg",
   });
+
+  const toast = useToast();
+
   const handleSubmit = (event) => {
+     debugger
     event.preventDefault();
-    console.log(formData);
+    // Validate
+    let isValid = true;
+    for (const prop in formData) {
+      if (formData[prop] == "") {
+        isValid = false;
+        toast({
+          title: `Field ${prop} is required`,
+          status: "error",
+          position: "top-right",
+        });
+      }
+    }
+
+    if (isValid) {
+      // Add to list
+      // Get last id
+      const id: number = Contacts.length + 1;
+      const newContact: Contact = {
+        id,
+        ...formData,
+      };
+      Contacts.push(newContact);
+      onClose();
+      toast({
+        title: "Contact added",
+        status: "success",
+        position: "top-right",
+      });
+    }
   };
 
   const handleChange = (event) => {
-    console.log(event.target.value);
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      // onCloseComplete={() => setFormData({})}
+    >
       <ModalOverlay />
 
       <ModalContent>

@@ -72,6 +72,7 @@ const Index = () => {
     <Layout>
       <AddContact isOpen={isOpenAddModal} onClose={onCloseAddModal} />
       <DeleteContact isOpen={isOpenDeleteModal} onClose={onCloseDeleteModal} deleteContact={() =>deleleContact(selectedContact.id)} />
+
       {/* Left Sider */}
       <HStack>
         <Box
@@ -92,7 +93,7 @@ const Index = () => {
                 textTransform={"uppercase"}
                 letterSpacing={-1}
               >
-                sailo contact
+                sailo contacyt
               </Heading>
             </Box>
             {/* Search Box */}
@@ -112,7 +113,7 @@ const Index = () => {
             <ContactsList
               contacts={filteredContacts}
               selectContact={selectContact}
-              h={"100vh"}
+              h={"60vh"}
               overflowY={"scroll"}
               css={ScrollBarStyles}
             />

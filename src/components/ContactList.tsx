@@ -1,30 +1,29 @@
 import { Box, List, ListItem, Text } from "@chakra-ui/react";
 
+const groupNames = (arr) => {
+  const map = arr.reduce((acc, val) => {
+    let char = val?.name?.charAt(0).toUpperCase() ;
+    acc[char] = [].concat(acc[char] || [], val);
+    return acc;
+  }, {});
+  let res = Object.keys(map).map((el) => ({
+    letter: el,
+    names: map[el],
+  }));
+  res = res.sort((a, b) => a.letter.localeCompare(b.letter));
+  return res;
+};
+
 export const ContactsList = (props) => {
   const { contacts, selectContact } = props;
-
-  const groupNames = (arr) => {
-    const map = arr.reduce((acc, val) => {
-      let char = val.name.charAt(0).toUpperCase();
-
-      acc[char] = [].concat(acc[char] || [], val);
-
-      return acc;
-    }, {});
-    const res = Object.keys(map).map((el) => ({
-      letter: el,
-      names: map[el],
-    }));
-    return res;
-  };
 
   return (
     <Box {...props}>
       <List>
-        {groupNames(contacts).map((letter, index) => (
+        {groupNames(contacts) && groupNames(contacts).map((group, index) => (
           <Box key={index}>
-            <Text>{letter.letter}</Text>
-            {letter.names.map((contact) => {
+            <Text fontWeight={"900"}>{group.letter}</Text>
+            {group.names.map((contact) => {
               return (
                 <ListItem
                   key={contact.id}
@@ -41,7 +40,7 @@ export const ContactsList = (props) => {
               );
             })}
           </Box>
-        ))}
+        )) }
       </List>
     </Box>
   );
