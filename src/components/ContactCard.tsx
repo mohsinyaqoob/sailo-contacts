@@ -31,7 +31,8 @@ export const ContactCard = (props) => {
       
       picture,
     },
-    deleteItem
+    openEditModal,
+    openDeleteModal,
   } = props;
   return (
     <VStack p={8} align={"left"}>
@@ -131,8 +132,15 @@ export const ContactCard = (props) => {
               <Button variant={"outline"} leftIcon={<EmailIcon />}>
                 Share Contact
               </Button>
-              <Button leftIcon={<EditIcon />}>Edit</Button>
-              <Button variant={"solid"} leftIcon={<DeleteIcon />} onClick = {deleteItem}>
+              <Button onClick={openEditModal} leftIcon={<EditIcon />}>
+                Edit
+              </Button>
+              <Button
+                onClick={openDeleteModal}
+                variant={"solid"}
+                leftIcon={<DeleteIcon />}
+                colorScheme={"red"}
+              >
                 Delete
               </Button>
             </ButtonGroup>

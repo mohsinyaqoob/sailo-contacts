@@ -15,10 +15,10 @@ const groupNames = (arr) => {
 };
 
 export const ContactsList = (props) => {
-  const { contacts, selectContact } = props;
+  const { contacts, selectContact , ...rest } = props;
 
   return (
-    <Box {...props}>
+    <Box {...rest}>
       <List>
         {groupNames(contacts) && groupNames(contacts).map((group, index) => (
           <Box key={index}>

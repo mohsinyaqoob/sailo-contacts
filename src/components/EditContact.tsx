@@ -10,7 +10,6 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-
   useToast,
   VStack,
 } from "@chakra-ui/react";
@@ -19,7 +18,7 @@ import { useState } from "react";
 import { Contact } from "../types/contact";
 import { getContacts, SaveContact } from "../utils";
 
-const AddContact = ({ isOpen, onClose, setReload, reload }) => {
+const EditContact = ({ isOpen, onClose, setReload, reload, contact }) => {
   const [formData, setFormData]: any = useState({
     name: "Sample User",
     email: "sample-user@sample-org.com",
@@ -33,12 +32,11 @@ const AddContact = ({ isOpen, onClose, setReload, reload }) => {
   const toast = useToast();
 
   const handleSubmit = (event) => {
-     debugger
     event.preventDefault();
     // Validate
     let isValid = true;
     for (const prop in formData) {
-      if (formData[prop] === "") {
+      if (formData[prop] == "") {
         isValid = false;
         toast({
           title: `Field ${prop} is required`,
@@ -188,4 +186,4 @@ const AddContact = ({ isOpen, onClose, setReload, reload }) => {
   );
 };
 
-export default AddContact;
+export default EditContact;

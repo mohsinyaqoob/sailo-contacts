@@ -23,6 +23,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "fonts": "yarn add @fontsource/space-grotesk",
     "start": "react-scripts start",
     "dev": "react-scripts start",
     "build": "react-scripts build",
