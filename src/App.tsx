@@ -42,8 +42,6 @@ const Index = () => {
     onClose: onCloseDeleteModal,
   } = useDisclosure();
 
-  
-
   const searchContacts = (query) => {
     const filter = contacts.filter((contact) =>
       contact.name.toLowerCase().includes(query.toLowerCase())
@@ -68,8 +66,6 @@ const Index = () => {
     contactsData.length > 0 && setSelectedContact(contactsData[0]);
   }, [reload]);
 
- 
-
   const ScrollBarStyles = {
     "&::-webkit-scrollbar": {
       width: "6px",
@@ -92,21 +88,25 @@ const Index = () => {
         onClose={onCloseAddModal}
       />
 
-      <EditContact
-        isOpen={isOpenEditModal}
-        onClose={onCloseEditModal}
-        setReload={setReload}
-        reload={reload}
-        contact={selectedContact}
-      />
+      {selectedContact && (
+        <EditContact
+          isOpen={isOpenEditModal}
+          onClose={onCloseEditModal}
+          setReload={setReload}
+          reload={reload}
+          contact={selectedContact}
+        />
+      )}
 
-      <DeleteContact
-        isOpen={isOpenDeleteModal}
-        onClose={onCloseDeleteModal}
-        setReload={setReload}
-        reload={reload}
-        contact={selectedContact}
-      />
+      {selectedContact && (
+        <DeleteContact
+          isOpen={isOpenDeleteModal}
+          onClose={onCloseDeleteModal}
+          setReload={setReload}
+          reload={reload}
+          contact={selectedContact}
+        />
+      )}
 
       {/* Left Sider */}
       <HStack>

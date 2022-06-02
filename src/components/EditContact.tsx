@@ -21,7 +21,7 @@ import { getContacts, SaveContact } from "../utils";
 const EditContact = (props) => {
   const { isOpen, onClose, setReload, reload, contact } = props;
   const [formData, setFormData]: any = useState({
-    name: "",
+    name: contact.name,
     email: "",
     phone: "",
     designation: "",
@@ -74,24 +74,14 @@ const EditContact = (props) => {
   };
 
   useEffect(() => {
-    console.log(contact);
+    setFormData({ ...formData, ...contact });
   }, []);
 
   return (
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      // onCloseComplete={() =>
-      //   setFormData({
-      //     name: "",
-      //     email: "",
-      //     phone: "",
-      //     designation: "",
-      //     department: "",
-      //     group: "Alpha Reds",
-      //     picture: "https://randomuser.me/api/portraits/women/37.jpg",
-      //   })
-      // }
+      onCloseComplete={() => setFormData({ ...props.contact })}
     >
       <ModalOverlay />
 
@@ -122,7 +112,7 @@ const EditContact = (props) => {
                   type="email"
                   placeholder="Email"
                   onChange={() => {}}
-                  value={""}
+                  value={formData.email}
                 />
               </FormControl>
               <FormControl>
@@ -132,7 +122,7 @@ const EditContact = (props) => {
                   type="number"
                   placeholder="Phone"
                   onChange={() => {}}
-                  value={""}
+                  value={formData.phone}
                 />
               </FormControl>
               <FormControl>
@@ -142,7 +132,7 @@ const EditContact = (props) => {
                   type="text"
                   placeholder="Designation"
                   onChange={() => {}}
-                  value={""}
+                  value={formData.designation}
                 />
               </FormControl>
               <FormControl>
@@ -152,7 +142,7 @@ const EditContact = (props) => {
                   type="text"
                   placeholder="Department"
                   onChange={() => {}}
-                  value={""}
+                  value={formData.department}
                 />
               </FormControl>
               <FormControl>
@@ -162,7 +152,7 @@ const EditContact = (props) => {
                   type="text"
                   placeholder="Group"
                   onChange={() => {}}
-                  value={""}
+                  value={formData.group}
                 />
               </FormControl>
               <FormControl>
@@ -172,7 +162,7 @@ const EditContact = (props) => {
                   type="text"
                   placeholder="Picture URL"
                   onChange={() => {}}
-                  value={""}
+                  value={formData.picture}
                 />
               </FormControl>
             </VStack>

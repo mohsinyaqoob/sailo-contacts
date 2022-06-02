@@ -52,9 +52,6 @@ const DeleteContact = ({ isOpen, onClose, reload, setReload, contact }) => {
           </ModalBody>
 
           <ModalFooter>
-            <Button type="submit" colorScheme="blue">
-              yes
-            </Button>
             <Button variant={"ghost"} mr={3} onClick={onClose}>
               Close
             </Button>

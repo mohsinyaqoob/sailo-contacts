@@ -10,7 +10,6 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-
   useToast,
   VStack,
 } from "@chakra-ui/react";
@@ -33,7 +32,6 @@ const AddContact = ({ isOpen, onClose, setReload, reload }) => {
   const toast = useToast();
 
   const handleSubmit = (event) => {
-     debugger
     event.preventDefault();
     // Validate
     let isValid = true;

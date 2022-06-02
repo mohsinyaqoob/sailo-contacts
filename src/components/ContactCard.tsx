@@ -27,8 +27,6 @@ export const ContactCard = (props) => {
       department,
       phone,
       group,
-      profileImage,
-      
       picture,
     },
     openEditModal,
