@@ -15,7 +15,7 @@ import { ContactsList } from "./components/ContactList";
 import { ContactCard } from "./components/ContactCard";
 import { AddIcon } from "@chakra-ui/icons";
 import AddContact from "./components/AddContact";
-import { dummyData, getContacts } from "./utils";
+import { getContacts } from "./utils";
 import EditContact from "./components/EditContact";
 import DeleteContact from "./components/DeleteContact";
 
@@ -61,7 +61,7 @@ const Index = () => {
 
   useEffect(() => {
     // Uncomment the below line to generate a predefined contact
-    // dummyData();
+
     const contactsData = getContacts();
     setContacts(contactsData);
     setFilteredContacts(contactsData);

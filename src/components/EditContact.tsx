@@ -37,7 +37,7 @@ const EditContact = (props) => {
 
     let isValid = true;
     for (const prop in formData) {
-      if (formData[prop] == "") {
+      if (formData[prop] === "") {
         isValid = false;
         toast({
           title: `Field ${prop} is required`,
