@@ -135,15 +135,17 @@ const Index = () => {
               py={2}
             >
               {/* <PhoneIcon /> */}
-              <Heading size={"md"} letterSpacing={-1}>
+              <Heading
+                _hover={{ cursor: "pointer" }}
+                onClick={() => setSelectedContact(null)}
+                size={"md"}
+                letterSpacing={-1}
+              >
                 Contacts App
               </Heading>
             </Box>
             {/* Search Box */}
-            <SearchBox
-              unselectContact={unselectContact}
-              searchContacts={searchContacts}
-            />
+            <SearchBox searchContacts={searchContacts} />
 
             {/* Contact List */}
             <HStack justifyContent={"space-between"} px={1}>

@@ -11,17 +11,12 @@ export const SearchBox = (props) => {
 
   return (
     <Box>
-      <InputGroup>
-        <Input
-          onChange={onSearch}
-          placeholder="Search..."
-          size={"md"}
-          {...rest}
-        />
-        <InputRightElement>
-          <DeleteIcon onClick={unselectContact} />
-        </InputRightElement>
-      </InputGroup>
+      <Input
+        onChange={onSearch}
+        placeholder="Search..."
+        size={"md"}
+        {...rest}
+      />
     </Box>
   );
 };
