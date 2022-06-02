@@ -20,8 +20,9 @@ import { getContacts, SaveContact } from "../utils";
 
 const EditContact = (props) => {
   const { isOpen, onClose, setReload, reload, contact } = props;
+
   const [formData, setFormData]: any = useState({
-    name: contact.name,
+    name: "",
     email: "",
     phone: "",
     designation: "",
@@ -75,7 +76,7 @@ const EditContact = (props) => {
 
   useEffect(() => {
     setFormData({ ...formData, ...contact });
-  }, []);
+  }, [contact]);
 
   return (
     <Modal
