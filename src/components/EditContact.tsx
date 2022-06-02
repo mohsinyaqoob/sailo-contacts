@@ -16,7 +16,7 @@ import {
 import { useEffect, useState } from "react";
 
 import { Contact } from "../types/contact";
-import { getContacts, SaveContact, updateContact } from "../utils";
+import { getContacts, saveContact, updateContact } from "../utils";
 
 const EditContact = (props) => {
   const { isOpen, onClose, setReload, reload, contact } = props;

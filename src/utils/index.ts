@@ -1,17 +1,24 @@
+import { Contact } from "../types/contact";
+import { v4 as uuidv4 } from "uuid";
+
 export const getShortName = (name: string) => {
   const nameArray = name.split(" ");
   return nameArray.map((n) => n.charAt(0));
 };
 
-export const SaveContact = (contact) => {
-  const localStorageData = localStorage.getItem("contacts");
+export const saveContact = (contact) => {
+  const contacts = getContacts();
 
-  if (localStorageData) {
-    const existingContacts = JSON.parse(localStorageData);
-    const newContacts = JSON.stringify([...existingContacts, contact]);
+  if (contacts.length > 0) {
+    const newContacts = JSON.stringify([
+      ...contacts,
+      { id: uuidv4(), ...contact },
+    ]);
     localStorage.setItem("contacts", newContacts);
   } else {
-    localStorage.setItem("contacts", JSON.stringify([contact]));
+    // Add demo data on load
+    const newContact = JSON.stringify([{ id: uuidv4(), ...contact }]);
+    localStorage.setItem("contacts", newContact);
   }
 };
 

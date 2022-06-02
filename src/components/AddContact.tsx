@@ -16,17 +16,19 @@ import {
 import { useState } from "react";
 
 import { Contact } from "../types/contact";
-import { getContacts, SaveContact } from "../utils";
+import { getContacts, saveContact } from "../utils";
 
 const AddContact = ({ isOpen, onClose, setReload, reload }) => {
   const [formData, setFormData]: any = useState({
     name: "Sample User",
-    email: "sample-user@sample-org.com",
-    phone: "777777777",
-    designation: "Software Engineer",
-    department: "Engineering",
-    group: "Alpha Reds",
-    picture: "https://randomuser.me/api/portraits/women/37.jpg",
+    email: "sample@sample.com",
+    phone: "9019209209",
+    designation: "UI Baker",
+    department: "Design",
+    group: "Alpha Blues",
+    picture: `https://randomuser.me/api/portraits/men/${Math.floor(
+      1 + Math.random() * (90 - 1 + 1)
+    )}.jpg`,
   });
 
   const toast = useToast();
@@ -49,14 +51,8 @@ const AddContact = ({ isOpen, onClose, setReload, reload }) => {
     if (isValid) {
       // Add to list
       // Get last id
-      const contacts = getContacts();
-      const id: number = contacts.length + 1;
-      const newContact: Contact = {
-        id,
-        ...formData,
-      };
 
-      SaveContact(newContact);
+      saveContact(formData);
       setReload(!reload);
 
       toast({
@@ -76,17 +72,19 @@ const AddContact = ({ isOpen, onClose, setReload, reload }) => {
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      // onCloseComplete={() =>
-      //   setFormData({
-      //     name: "",
-      //     email: "",
-      //     phone: "",
-      //     designation: "",
-      //     department: "",
-      //     group: "Alpha Reds",
-      //     picture: "https://randomuser.me/api/portraits/women/37.jpg",
-      //   })
-      // }
+      onCloseComplete={() =>
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          designation: "",
+          department: "",
+          group: "Alpha Blues",
+          picture: `https://randomuser.me/api/portraits/men/${Math.floor(
+            1 + Math.random() * (90 - 1 + 1)
+          )}.jpg`,
+        })
+      }
     >
       <ModalOverlay />
 
