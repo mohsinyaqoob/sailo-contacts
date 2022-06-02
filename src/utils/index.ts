@@ -1,4 +1,3 @@
-import { Contact } from "../types/contact";
 import { v4 as uuidv4 } from "uuid";
 
 export const getShortName = (name: string) => {
@@ -48,4 +47,31 @@ export const updateContact = (contact) => {
   contacts[index] = contactToUpdate;
 
   localStorage.setItem("contacts", JSON.stringify(contacts));
+};
+
+export const dummyData = () => {
+  // Add demo data on load
+  const contact = JSON.stringify([
+    {
+      id: uuidv4(),
+      name: "Ashish Kumar Gupta",
+      email: "ashish.gupta@qsstechnosoft.com",
+      phone: "+919044303003",
+      designation: "Senior Software Engineer",
+      department: "Engineerig",
+      group: "Alpha Reds",
+      picture: `https://randomuser.me/api/portraits/men/33.jpg`,
+    },
+    {
+      id: uuidv4(),
+      name: "Bella Jayson",
+      email: "bella.jayson@qsstechnosoft.com",
+      phone: "+919044303003",
+      designation: "UI Baker",
+      department: "Design",
+      group: "Alpha Blues",
+      picture: `https://randomuser.me/api/portraits/women/32.jpg`,
+    },
+  ]);
+  localStorage.setItem("contacts", contact);
 };

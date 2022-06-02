@@ -1,11 +1,5 @@
 import { DeleteIcon } from "@chakra-ui/icons";
-import {
-  Box,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { ChangeEventHandler } from "react";
 
 export const SearchBox = (props) => {

@@ -15,8 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 
-import { Contact } from "../types/contact";
-import { getContacts, saveContact } from "../utils";
+import { saveContact } from "../utils";
 
 const AddContact = ({ isOpen, onClose, setReload, reload }) => {
   const [formData, setFormData]: any = useState({
@@ -35,7 +34,7 @@ const AddContact = ({ isOpen, onClose, setReload, reload }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Validate
+
     let isValid = true;
     for (const prop in formData) {
       if (formData[prop] === "") {
@@ -49,9 +48,6 @@ const AddContact = ({ isOpen, onClose, setReload, reload }) => {
     }
 
     if (isValid) {
-      // Add to list
-      // Get last id
-
       saveContact(formData);
       setReload(!reload);
 
@@ -74,11 +70,11 @@ const AddContact = ({ isOpen, onClose, setReload, reload }) => {
       onClose={onClose}
       onCloseComplete={() =>
         setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          designation: "",
-          department: "",
+          name: "Sample User",
+          email: "sample@sample.com",
+          phone: "9019209209",
+          designation: "UI Baker",
+          department: "Design",
           group: "Alpha Blues",
           picture: `https://randomuser.me/api/portraits/men/${Math.floor(
             1 + Math.random() * (90 - 1 + 1)

@@ -15,8 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-import { Contact } from "../types/contact";
-import { getContacts, saveContact, updateContact } from "../utils";
+import { updateContact } from "../utils";
 
 const EditContact = (props) => {
   const { isOpen, onClose, setReload, reload, contact } = props;
@@ -35,7 +34,7 @@ const EditContact = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Validate
+
     let isValid = true;
     for (const prop in formData) {
       if (formData[prop] == "") {

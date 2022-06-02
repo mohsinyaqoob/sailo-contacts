@@ -14,13 +14,6 @@ import {
 } from "@chakra-ui/react";
 import { deleteContact } from "../utils";
 
-type DeleteContactProps = {
-  isOpen: UseDisclosureProps;
-  onClose: UseDisclosureProps;
-  reload: boolean;
-  setReload: Function;
-};
-
 const DeleteContact = ({ isOpen, onClose, reload, setReload, contact }) => {
   const toast = useToast();
 

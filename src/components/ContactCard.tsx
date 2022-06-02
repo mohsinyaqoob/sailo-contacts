@@ -34,7 +34,7 @@ export const ContactCard = (props) => {
   } = props;
   return (
     <VStack p={8} align={"left"}>
-      <HStack flex={1} gap={8}>
+      <HStack gap={8}>
         <Box
           className="profile-picture"
           bg={"lightGray"}
@@ -59,13 +59,11 @@ export const ContactCard = (props) => {
           </Heading>
         </Box>
         <VStack align={"left"} spacing={0}>
-          <Heading size={"xl"}>
-            {name}
-            <Badge ml="2" fontSize={12} colorScheme="green">
-              EMP-{id}
-            </Badge>
-          </Heading>
-          <Text>{designation}</Text>
+          <Heading size={"xl"}>{name}</Heading>
+          <Text pb={2}>{designation}</Text>
+          <Badge fontSize={12} colorScheme="green">
+            EMP-{id}
+          </Badge>
         </VStack>
       </HStack>
       <HStack flex={1} gap={8} pt={8}>

@@ -15,7 +15,7 @@ import { ContactsList } from "./components/ContactList";
 import { ContactCard } from "./components/ContactCard";
 import { AddIcon } from "@chakra-ui/icons";
 import AddContact from "./components/AddContact";
-import { getContacts } from "./utils";
+import { dummyData, getContacts } from "./utils";
 import EditContact from "./components/EditContact";
 import DeleteContact from "./components/DeleteContact";
 
@@ -60,10 +60,14 @@ const Index = () => {
   };
 
   useEffect(() => {
+    // Uncomment the below line to generate a predefined contact
+    // dummyData();
     const contactsData = getContacts();
     setContacts(contactsData);
     setFilteredContacts(contactsData);
-    contactsData.length > 0 && setSelectedContact(contactsData[0]);
+    contactsData.length > 0
+      ? setSelectedContact(contactsData[0])
+      : setSelectedContact(null);
   }, [reload]);
 
   const ScrollBarStyles = {
@@ -121,14 +125,18 @@ const Index = () => {
           justifyContent={"space-between"}
         >
           <VStack align={"left"} spacing={8}>
-            <Box mb={8} display={"flex"} alignItems={"center"} gap={4}>
+            <Box
+              borderBottom={"1px"}
+              borderColor={"lightGray"}
+              mb={8}
+              display={"flex"}
+              alignItems={"center"}
+              gap={4}
+              py={2}
+            >
               {/* <PhoneIcon /> */}
-              <Heading
-                size={"md"}
-                textTransform={"uppercase"}
-                letterSpacing={-1}
-              >
-                sailo contacyt
+              <Heading size={"md"} letterSpacing={-1}>
+                Contacts App
               </Heading>
             </Box>
             {/* Search Box */}
