@@ -13,20 +13,21 @@ import {
   useToast,
   VStack,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Contact } from "../types/contact";
 import { getContacts, SaveContact } from "../utils";
 
-const EditContact = ({ isOpen, onClose, setReload, reload, contact }) => {
+const EditContact = (props) => {
+  const { isOpen, onClose, setReload, reload, contact } = props;
   const [formData, setFormData]: any = useState({
-    name: "Sample User",
-    email: "sample-user@sample-org.com",
-    phone: "777777777",
-    designation: "Software Engineer",
-    department: "Engineering",
-    group: "Alpha Reds",
-    picture: "https://randomuser.me/api/portraits/women/37.jpg",
+    name: "",
+    email: "",
+    phone: "",
+    designation: "",
+    department: "",
+    group: "",
+    picture: "",
   });
 
   const toast = useToast();
@@ -72,6 +73,10 @@ const EditContact = ({ isOpen, onClose, setReload, reload, contact }) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
+  useEffect(() => {
+    console.log(contact);
+  }, []);
+
   return (
     <Modal
       isOpen={isOpen}
@@ -91,7 +96,7 @@ const EditContact = ({ isOpen, onClose, setReload, reload, contact }) => {
       <ModalOverlay />
 
       <ModalContent>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={() => {}}>
           <ModalHeader>Add Contact</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -106,7 +111,7 @@ const EditContact = ({ isOpen, onClose, setReload, reload, contact }) => {
                   name="name"
                   type="text"
                   placeholder="Full name"
-                  onChange={handleChange}
+                  onChange={() => {}}
                   value={formData.name}
                 />
               </FormControl>
@@ -116,8 +121,8 @@ const EditContact = ({ isOpen, onClose, setReload, reload, contact }) => {
                   name="email"
                   type="email"
                   placeholder="Email"
-                  onChange={handleChange}
-                  value={formData.email}
+                  onChange={() => {}}
+                  value={""}
                 />
               </FormControl>
               <FormControl>
@@ -126,8 +131,8 @@ const EditContact = ({ isOpen, onClose, setReload, reload, contact }) => {
                   name="phone"
                   type="number"
                   placeholder="Phone"
-                  onChange={handleChange}
-                  value={formData.phone}
+                  onChange={() => {}}
+                  value={""}
                 />
               </FormControl>
               <FormControl>
@@ -136,8 +141,8 @@ const EditContact = ({ isOpen, onClose, setReload, reload, contact }) => {
                   name="designation"
                   type="text"
                   placeholder="Designation"
-                  onChange={handleChange}
-                  value={formData.designation}
+                  onChange={() => {}}
+                  value={""}
                 />
               </FormControl>
               <FormControl>
@@ -146,8 +151,8 @@ const EditContact = ({ isOpen, onClose, setReload, reload, contact }) => {
                   name="department"
                   type="text"
                   placeholder="Department"
-                  onChange={handleChange}
-                  value={formData.department}
+                  onChange={() => {}}
+                  value={""}
                 />
               </FormControl>
               <FormControl>
@@ -156,8 +161,8 @@ const EditContact = ({ isOpen, onClose, setReload, reload, contact }) => {
                   name="group"
                   type="text"
                   placeholder="Group"
-                  onChange={handleChange}
-                  value={formData.group}
+                  onChange={() => {}}
+                  value={""}
                 />
               </FormControl>
               <FormControl>
@@ -166,8 +171,8 @@ const EditContact = ({ isOpen, onClose, setReload, reload, contact }) => {
                   name="picture"
                   type="text"
                   placeholder="Picture URL"
-                  onChange={handleChange}
-                  value={formData.picture}
+                  onChange={() => {}}
+                  value={""}
                 />
               </FormControl>
             </VStack>

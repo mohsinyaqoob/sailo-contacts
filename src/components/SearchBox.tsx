@@ -9,7 +9,7 @@ import {
 import { ChangeEventHandler } from "react";
 
 export const SearchBox = (props) => {
-  const { searchContacts, unselectContact } = props;
+  const { searchContacts, unselectContact, ...rest } = props;
   const onSearch: ChangeEventHandler<HTMLInputElement> = (event) => {
     const query = event.currentTarget.value;
     searchContacts(query);
@@ -22,7 +22,7 @@ export const SearchBox = (props) => {
           onChange={onSearch}
           placeholder="Search..."
           size={"md"}
-          {...props}
+          {...rest}
         />
         <InputRightElement>
           <DeleteIcon onClick={unselectContact} />

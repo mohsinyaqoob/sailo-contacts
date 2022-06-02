@@ -1,7 +1,5 @@
 import {
   Button,
-  FormControl,
-  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -10,7 +8,6 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-  Toast,
   UseDisclosureProps,
   useToast,
   VStack,
@@ -39,6 +36,7 @@ const DeleteContact = ({ isOpen, onClose, reload, setReload, contact }) => {
       position: "top-right",
     });
   };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
