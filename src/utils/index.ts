@@ -14,6 +14,7 @@ export const SaveContact = (contact) => {
     localStorage.setItem("contacts", JSON.stringify([contact]));
   }
 };
+
 export const getContacts = () => {
   const localStorageData = localStorage.getItem("contacts");
   if (localStorageData) {
@@ -29,4 +30,15 @@ export const deleteContact = (id: number) => {
   const contacts = JSON.parse(localStorageData);
   const newContacts = contacts.filter((contact) => contact.id !== id);
   localStorage.setItem("contacts", JSON.stringify(newContacts));
+};
+
+export const updateContact = (contact) => {
+  const id = contact.id;
+  let contacts = getContacts();
+  let contactToUpdate = contacts.find((contact) => contact.id === id);
+  const index = contacts.map((i) => i.id).indexOf(id);
+  contactToUpdate = { ...contact };
+  contacts[index] = contactToUpdate;
+
+  localStorage.setItem("contacts", JSON.stringify(contacts));
 };
